@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laz - Find Your Perfect Coziest Chair</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo"><img src="asset/logo.png" alt="logo" width="100px"></a>
+            <ul class="nav-menu">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header with Hero Image -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Coziest Chair</h1>
+            <p>Embrace the art of being lazy. Discover the coziest chairs designed to make you the most comfortable and relaxed.</p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </div>
+    </header>
+
+    <!-- Highlight Section with 3 Products -->
+    <section id="products" class="highlight-section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <model-viewer src="asset/3d-chair-1.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <div class="product-info">
+                        <h3>The Snuggle</h3>
+                        <p class="product-description">A spacious sofa chair that invites you to sink in and never want to leave. Perfect for those who take relaxation seriously.</p>
+                        <p class="product-price">$299.99</p>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <model-viewer src="asset/3d-chair-5.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <div class="product-info">
+                        <h3>The Chill Zone</h3>
+                        <p class="product-description">A luxurious lounge chair designed for ultimate laziness. Recline, relax, and let the world wait.</p>
+                        <p class="product-price">$399.99</p>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <model-viewer src="asset/3d-chair-4.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <div class="product-info">
+                        <h3>The Cozy Nook</h3>
+                        <p class="product-description">Your personal comfort cocoon. This armchair wraps you in coziness, making every moment feel like a lazy Sunday.</p>
+                        <p class="product-price">$349.99</p>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Laz</h2>
+                <p>At Laz, we celebrate the art of being lazy. We believe everyone deserves to find their perfect coziest chair—a place where comfort meets relaxation, and you can truly unwind.</p>
+                <p>Our mission is simple: to help you discover that one chair that makes you feel the most comfortable and relaxed. Whether you're curling up with a book, binge-watching your favorite show, or simply doing absolutely nothing, we've got the perfect chair for your lazy moments.</p>
+                <p>Each chair in our collection is handpicked for its ability to transform any space into your personal comfort zone. Because at Laz, we know that the best moments in life are the ones spent doing nothing at all.</p>
+                <model-viewer src="asset/3d-beanbag.glb" camera-controls auto-rotate touch-action="pan-y" disable-zoom></model-viewer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Break -->
+    <section class="image-break">
+        <div class="break-overlay">
+            <p>Embrace your lazy side. Find the coziest chair that makes you never want to get up.</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <model-viewer src="asset/3d-chair-3.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <h3>Sofa Chairs</h3>
+                    <p>Spacious and inviting, these sofa chairs offer the ultimate lazy lounging experience. Perfect for sinking into comfort.</p>
+                    <a href="#" class="btn-secondary">Explore</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <model-viewer src="asset/3d-chair-6.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <h3>Bean Bags</h3>
+                    <p>The epitome of casual comfort. Mold to your body, relax completely, and embrace the ultimate lazy lifestyle.</p>
+                    <a href="#" class="btn-secondary">Explore</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <model-viewer src="asset/3d-chair-2.glb" camera-controls auto-rotate touch-action="pan-y"></model-viewer>
+                    </div>
+                    <h3>Armchairs</h3>
+                    <p>Your personal comfort cocoon. These armchairs create the perfect cozy nook for your lazy moments and relaxation.</p>
+                    <a href="#" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Laz</h3>
+                    <p>Your destination for the coziest chairs. Embrace the lazy life.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@laz.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Address: 123 Comfort St, Lazy City</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
