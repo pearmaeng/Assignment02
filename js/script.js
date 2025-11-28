@@ -80,3 +80,57 @@ document.querySelectorAll('.product-card, .category-card').forEach(card => {
     card.style.transition = 'opacity 0.6s, transform 0.6s';
     observer.observe(card);
 });
+
+// Scroll-driven image sequence for About section
+(function () {
+    const aboutSection = document.querySelector('.about-section');
+    const sequenceContainer = document.querySelector('#about-scroll-sequence img');
+
+    if (!aboutSection || !sequenceContainer) return;
+
+    const frameCount = 23; // 00000 - 00022
+    const frameSources = [];
+
+    // Generate frame sources and preload images
+    for (let i = 0; i < frameCount; i++) {
+        const frameNumber = String(i).padStart(5, '0');
+        const src = `asset/Sofa_Video_Generation_Request/Sofa_Video_Generation_Request_${frameNumber}.png`;
+        frameSources.push(src);
+
+        // Preload images for smoother playback
+        const img = new Image();
+        img.src = src;
+    }
+
+    // Set initial frame
+    sequenceContainer.src = frameSources[0];
+
+    function updateSequence() {
+        const sectionTop = aboutSection.offsetTop;
+        const sectionHeight = aboutSection.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+
+        // Start when section begins to appear, finish when section ends
+        const startScroll = sectionTop - windowHeight;
+        const endScroll = sectionTop + sectionHeight - windowHeight;
+        const totalScroll = endScroll - startScroll;
+
+        if (totalScroll <= 0) return;
+
+        let progress = (scrollY - startScroll) / totalScroll;
+        progress = Math.min(Math.max(progress, 0), 1); // Clamp between 0 and 1
+
+        // Map progress to frame index
+        const frameIndex = Math.min(
+            frameCount - 1,
+            Math.floor(progress * (frameCount - 1))
+        );
+
+        sequenceContainer.src = frameSources[frameIndex];
+    }
+
+    window.addEventListener('scroll', updateSequence);
+    window.addEventListener('resize', updateSequence);
+    updateSequence(); // Initial call
+})();
