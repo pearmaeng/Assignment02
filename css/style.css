@@ -242,6 +242,8 @@ body {
     /* padding-top: 2rem;
     padding-bottom: 2rem; */
     padding: 2rem 0;
+    background: linear-gradient(#fafafa, #f0f0f0);
+    
 }
 
 .about-scroll-container {
@@ -249,6 +251,8 @@ body {
     height: 40vh;
     min-height: 300px;
     overflow: hidden;
+    /* align-self: flex-end; */
+    align-self: center;
 }
 
 .about-scroll-container img {
