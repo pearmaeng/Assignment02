@@ -245,7 +245,7 @@ body {
 }
 
 .about-scroll-container {
-    width: 100%;
+    width: 90%;
     height: 40vh;
     min-height: 300px;
     overflow: hidden;
