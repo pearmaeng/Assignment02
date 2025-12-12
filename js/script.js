@@ -84,28 +84,52 @@ document.querySelectorAll('.product-card, .category-card').forEach(card => {
 // Scroll-driven image sequence for About section
 (function () {
     const aboutSection = document.querySelector('.about-section');
-    const sequenceContainer = document.querySelector('#about-scroll-sequence img');
+    if (!aboutSection) return;
 
-    if (!aboutSection || !sequenceContainer) return;
+    // Sequence 1: sofa1 (frames 15-70, 56 frames)
+    const sequence1Container = document.querySelector('#about-scroll-sequence-1 img');
+    const sequence1Config = {
+        container: sequence1Container,
+        folder: 'sofa1',
+        prefix: 'sofa1_',
+        startFrame: 15,
+        endFrame: 70,
+        frameCount: 56
+    };
 
-    const frameCount = 23; // 00000 - 00022
-    const frameSources = [];
+    // Sequence 2: sofa2 (frames 10-66, 57 frames)
+    const sequence2Container = document.querySelector('#about-scroll-sequence-2 img');
+    const sequence2Config = {
+        container: sequence2Container,
+        folder: 'sofa2',
+        prefix: 'Comp 2_',
+        startFrame: 10,
+        endFrame: 66,
+        frameCount: 57
+    };
 
-    // Generate frame sources and preload images
-    for (let i = 0; i < frameCount; i++) {
-        const frameNumber = String(i).padStart(5, '0');
-        const src = `asset/Sofa_Video_Generation_Request/Sofa_Video_Generation_Request_${frameNumber}.png`;
-        frameSources.push(src);
+    const sequences = [sequence1Config, sequence2Config].filter(seq => seq.container);
 
-        // Preload images for smoother playback
-        const img = new Image();
-        img.src = src;
-    }
+    // Generate frame sources and preload images for each sequence
+    sequences.forEach(seq => {
+        seq.frameSources = [];
+        for (let i = seq.startFrame; i <= seq.endFrame; i++) {
+            const frameNumber = String(i).padStart(5, '0');
+            const src = `asset/${seq.folder}/${seq.prefix}${frameNumber}.png`;
+            seq.frameSources.push(src);
 
-    // Set initial frame
-    sequenceContainer.src = frameSources[0];
+            // Preload images for smoother playback
+            const img = new Image();
+            img.src = src;
+        }
 
-    function updateSequence() {
+        // Set initial frame
+        if (seq.frameSources.length > 0) {
+            seq.container.src = seq.frameSources[0];
+        }
+    });
+
+    function updateSequences() {
         const sectionTop = aboutSection.offsetTop;
         const sectionHeight = aboutSection.offsetHeight;
         const windowHeight = window.innerHeight;
@@ -121,16 +145,21 @@ document.querySelectorAll('.product-card, .category-card').forEach(card => {
         let progress = (scrollY - startScroll) / totalScroll;
         progress = Math.min(Math.max(progress, 0), 1); // Clamp between 0 and 1
 
-        // Map progress to frame index
-        const frameIndex = Math.min(
-            frameCount - 1,
-            Math.floor(progress * (frameCount - 1))
-        );
+        // Update all sequences simultaneously
+        sequences.forEach(seq => {
+            if (!seq.frameSources || seq.frameSources.length === 0) return;
 
-        sequenceContainer.src = frameSources[frameIndex];
+            // Map progress to frame index
+            const frameIndex = Math.min(
+                seq.frameSources.length - 1,
+                Math.floor(progress * (seq.frameSources.length - 1))
+            );
+
+            seq.container.src = seq.frameSources[frameIndex];
+        });
     }
 
-    window.addEventListener('scroll', updateSequence);
-    window.addEventListener('resize', updateSequence);
-    updateSequence(); // Initial call
+    window.addEventListener('scroll', updateSequences);
+    window.addEventListener('resize', updateSequences);
+    updateSequences(); // Initial call
 })();
